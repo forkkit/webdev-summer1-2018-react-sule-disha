@@ -1,12 +1,21 @@
 import React from 'react';
 import CourseList from "./CourseList";
+import CourseEditor from "./CourseEditor";
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+
 class CourseManager extends React.Component {
     render() {
         return (
-            <div>
-            <h1>Course Manager</h1>
-            <CourseList/>
-            </div>
+            <Router>
+                <div>
+                    <h1>Course Manager</h1>
+                    <Route path="/course" component={CourseList}>
+                    </Route>
+                    <Route path="/course/:courseId/edit"
+                           component={CourseEditor}>
+                    </Route>
+                </div>
+            </Router>
         )
     }
 }
