@@ -81,10 +81,7 @@ export default class ModuleList extends React.Component {
         return (<ul>{modules}</ul>)
     }
 
-
-
-
-    render() {
+        render() {
         return (
             <Router>
                 <div className="row">

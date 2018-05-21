@@ -1,4 +1,5 @@
 import React from 'react';
+import LessonTabs from "../lessons/LessonTabs";
 export default class ModuleEditor
     extends React.Component {
 
@@ -40,6 +41,8 @@ export default class ModuleEditor
 
     render() {
         return (
+            <div>
             <h1>Module Editor Course {this.state.courseId} Module {this.state.moduleId}</h1>
+                <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/></div>
 
     )}}
