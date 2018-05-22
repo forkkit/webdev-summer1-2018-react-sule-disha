@@ -16,13 +16,16 @@ class CourseList extends React.Component {
         this.findAllCourses();
     }
 
-    courseRows() {
-        var rows = this.state.courses.map(function(course) {
-            return <CourseRow key={course.id} course={course}/>
-        });
+    renderCourseRows() {
+        let courses = this.state.courses.map(
+            (course) => {
+                return <CourseRow course={course} key={course.id} delete={this.deleteCourse}/>;
+            }
+        );
         return (
-            rows
+            courses
         )}
+
 
     titleChanged(event) {
         this.setState({
@@ -38,7 +41,7 @@ class CourseList extends React.Component {
 
     deleteCourse(courseId) {
         this.courseService
-            .deleteCourse(courseId);
+            .deleteCourse(courseId).then(() => { this.findAllCourses(); });
     }
 
 
@@ -63,7 +66,7 @@ class CourseList extends React.Component {
                                    placeholder="cs101"/></th>
                         <th><button onClick={this.createCourse} className="btn btn-primary">Add</button></th>
                     </tr>
-                    {this.courseRows()}
+                    {this.renderCourseRows()}
                     </tbody>
                 </table>
             </div>
