@@ -2,6 +2,10 @@ import React from 'react';
 import LessonService from '../../services/LessonService';
 import ModuleService from "../../services/ModuleService";
 import LessonTabItem from "../../components/LessonTabItem"
+import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
+import {BrowserRouter as Router} from 'react-router-dom'
+import {Route} from 'react-router-dom'
+import LessonEditor from "./LessonEditor";
 
 export default class LessonTabs extends React.Component {
 
@@ -76,23 +80,32 @@ export default class LessonTabs extends React.Component {
         let lessons = this.state.lessons.map((lesson) => {
             return (<LessonTabItem key={lesson.id}
                                     lesson={lesson}
+                                   moduleId={this.props.moduleId}
+                                   courseId={this.props.courseId}
                                    delete={this.deleteLesson}/>)
         });
         return (
-            <div className="container-fluid">
-                <ul className="nav nav-tabs"> {lessons}</ul></div>
+                <nav>
+                    <div className="nav nav-tabs" id="nav-tab" role="tablist"> {lessons}</div></nav>
         )
-        //return (<ul>All Lessons</ul>)
+
     }
 
 
 
     render() {
         return (
+            <Router>
             <div className="container-fluid">
             <h4>Lesson Tabs for Course: {this.state.courseId} Module: {this.state.moduleId}</h4>
                 <input value={this.state.lesson.title} className="form-control" placeholder="New Lesson" onChange={this.setLessonTitle}/>
                 <button onClick={this.createLesson} className="btn btn-primary">Create</button>
                 {this.renderLessons()}
+                <div class="tab-content">
+                        <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId" component={LessonEditor}/>
+                </div>
             </div>
+            </Router>
                 )}}
+
+
