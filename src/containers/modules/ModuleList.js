@@ -90,11 +90,11 @@ export default class ModuleList extends React.Component {
                             <tbody>
                             <tr>
                                 <td><input value={this.state.module.title} onChange={this.setModuleTitle} className="form-control" placeholder="New Module"/></td>
-                                <td><button onClick={this.createModule} className="btn btn-primary"><i className="fa fa-plus"></i></button></td>
+                                <td align="right"><button onClick={this.createModule} className="btn btn-primary"><i className="fa fa-plus"></i></button></td>
                             </tr>
-                        {this.renderModules()}
                             </tbody>
                         </table>
+                        {this.renderModules()}
                         </div>
                     <div className="col-8"><Route path= "/course/:courseId/module/:moduleId" component={ModuleEditor}/></div>
                 </div></Router>)}

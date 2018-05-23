@@ -9,11 +9,13 @@ class CourseRow extends React.Component {
     }
     render() {
         return (
-            <tr><td>        <Link to={`/course/${this.props.course.id}/edit`}>
+            <tr>
+                <td><i class="fa fa-file-text" aria-hidden="true"></i></td>
+                <td>        <Link to={`/course/${this.props.course.id}/edit`}>
                 {this.props.course.title}
             </Link></td>
                 <td>{this.props.course.modified}</td>
-        <td><button className="btn" onClick={() =>
+        <td><button className="btn bg-transparent" onClick={() =>
         {this.props.delete(this.props.course.id)}}>
             <i className="fa fa-times"></i>
         </button>

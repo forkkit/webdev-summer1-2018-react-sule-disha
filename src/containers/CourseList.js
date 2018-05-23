@@ -76,6 +76,7 @@ class CourseList extends React.Component {
                 <table className="table">
                     <thead className="thead-light">
                     <tr>
+                        <th></th>
                         <th scope="col">Title</th>
                         <th scope="col">Last Modified</th>
                         <th></th>
