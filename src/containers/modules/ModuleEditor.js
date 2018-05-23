@@ -43,7 +43,7 @@ export default class ModuleEditor
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <h1>Module Editor Course {this.state.courseId} Module {this.state.moduleId}</h1>
+                    <h1>Module Editor Course Id: {this.state.courseId} Module Id: {this.state.moduleId}</h1>
                 </nav>
                 <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/></div>
 

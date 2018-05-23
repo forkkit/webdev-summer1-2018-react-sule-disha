@@ -54,9 +54,9 @@ export default class LessonEditor extends React.Component {
         return (
             <div>
             <h3>Lesson Editor</h3>
-            <h6>Course: {this.state.courseId}</h6>
-            <h6>Module: {this.state.moduleId}</h6>
-            <h6>Lesson: {this.state.lessonId}</h6>
+            <h6>Course Id: {this.state.courseId}</h6>
+            <h6>Module Id: {this.state.moduleId}</h6>
+            <h6>Lesson Id: {this.state.lessonId}</h6>
                 <h3>
                     Content
                 </h3>

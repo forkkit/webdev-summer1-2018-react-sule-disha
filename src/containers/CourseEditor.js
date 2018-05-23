@@ -20,7 +20,7 @@ class CourseEditor extends React.Component {
     }
     render() {
         return (<div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light"><h3>Course {this.state.courseId}</h3></nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light"><h3>Course Id: {this.state.courseId}</h3></nav>
             <ModuleList
                 courseId={this.state.courseId}/>
         </div>)
