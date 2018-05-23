@@ -7,12 +7,15 @@ export default class ModuleListItem extends React.Component {
 
     render() {
         return (
-            <li><Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>{this.props.module.title}</Link>
-                <button className="btn btn-danger" onClick={() =>
-                {this.props.delete
-                (this.props.module.id)}}>
-                    DELETE</button>
-            </li>
+
+                <tr>
+                    <td> <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>{this.props.module.title}</Link></td>
+                    <td>                <button className="btn btn-danger" onClick={() =>
+                    {this.props.delete
+                    (this.props.module.id)}}>
+                        <i className="fa fa-times"></i>
+                    </button></td>
+                </tr>
         )}
 
 }

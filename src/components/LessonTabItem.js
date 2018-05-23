@@ -1,17 +1,19 @@
 import React from 'react';
 import LessonEditor from "../containers/lessons/LessonEditor";
 import { Route, Link } from 'react-router-dom'
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 export default class LessonTabItem extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        return (<div>
-            <div class="nav-item" data-toggle="tab"  role="tab">
+        return (
+            <li className="nav-item btn btn-light">
                 <Link to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}>{this.props.lesson.title}</Link>
-                <button className="btn btn-danger" onClick={() =>{this.props.delete(this.props.lesson.id)}}>DELETE</button></div>
-           </div>
+                <div className="pull-right">
+                    <button onClick={() =>{this.props.delete(this.props.lesson.id)}}>
+                        <i className="fa fa-times"></i></button></div></li>
 
     )}
 }

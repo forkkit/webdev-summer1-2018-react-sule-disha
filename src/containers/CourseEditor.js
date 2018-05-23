@@ -19,9 +19,8 @@ class CourseEditor extends React.Component {
         (newProps.match.params.courseId);
     }
     render() {
-        return (<div className="container-fluid">
-            <h3>Course {this.state.courseId}
-            </h3>
+        return (<div>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light"><h3>Course {this.state.courseId}</h3></nav>
             <ModuleList
                 courseId={this.state.courseId}/>
         </div>)

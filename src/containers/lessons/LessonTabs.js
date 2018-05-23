@@ -85,8 +85,8 @@ export default class LessonTabs extends React.Component {
                                    delete={this.deleteLesson}/>)
         });
         return (
-                <nav>
-                    <div className="nav nav-tabs" id="nav-tab" role="tablist"> {lessons}</div></nav>
+            <ul className="nav nav-pills nav-justified">
+                {lessons}</ul>
         )
 
     }
@@ -97,11 +97,20 @@ export default class LessonTabs extends React.Component {
         return (
             <Router>
             <div className="container-fluid">
-            <h4>Lesson Tabs for Course: {this.state.courseId} Module: {this.state.moduleId}</h4>
-                <input value={this.state.lesson.title} className="form-control" placeholder="New Lesson" onChange={this.setLessonTitle}/>
-                <button onClick={this.createLesson} className="btn btn-primary">Create</button>
+                <table className="table">
+                    <tbody>
+                    <tr>
+                <td>
+                    <input value={this.state.lesson.title} className="form-control" placeholder="New Lesson" onChange={this.setLessonTitle}/>
+                </td>
+                <td>
+                    <button onClick={this.createLesson} className="btn btn-primary">Create</button>
+                </td>
+                    </tr>
+                    </tbody>
+                </table>
                 {this.renderLessons()}
-                <div class="tab-content">
+                <div className="tab-content">
                         <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId" component={LessonEditor}/>
                 </div>
             </div>

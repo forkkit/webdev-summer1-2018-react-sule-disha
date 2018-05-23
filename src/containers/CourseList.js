@@ -1,6 +1,7 @@
 import React from 'react';
 import CourseRow from "../components/CourseRow";
 import CourseService from '../services/CourseService';
+import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 class CourseList extends React.Component {
     constructor() {
@@ -56,19 +57,35 @@ class CourseList extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <h2>Course List</h2>
-                <table className="table">
-                    <thead><tr><th>Title</th></tr></thead>
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <table className="table">
                     <tbody>
-                    <tr>
+                    <tr align="left">
+                        <th><h3>Course List</h3></th>
                         <th><input onChange={this.titleChanged} className="form-control" id="titleFld"
-                                   placeholder="cs101"/></th>
-                        <th><button onClick={this.createCourse} className="btn btn-primary">Add</button></th>
+                                   placeholder="New Course"/></th>
+                        <th><button onClick={this.createCourse} className="btn btn-primary">
+                            <i className="fa fa-plus"></i>
+                        </button></th>
                     </tr>
+                    </tbody>
+                    </table>
+                </nav>
+                <div className="jumbotron text-center">
+                <table className="table">
+                    <thead className="thead-light">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Last Modified</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {this.renderCourseRows()}
                     </tbody>
                 </table>
+                </div>
             </div>
         )
     }
