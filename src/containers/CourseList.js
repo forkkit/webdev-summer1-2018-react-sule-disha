@@ -58,23 +58,28 @@ class CourseList extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <table className="table">
-                    <tbody>
-                    <tr align="left">
-                        <th><h3>Course List</h3></th>
-                        <th><input onChange={this.titleChanged} className="form-control" id="titleFld"
-                                   placeholder="New Course"/></th>
-                        <th><button onClick={this.createCourse} className="btn btn-primary">
+                <br/>
+                <div className="row"></div>
+                <div className="container-fluid">
+            <div className="row">
+                   <div className="col-3">
+                       <h3>Course List</h3>
+                   </div>
+                    <div className="col-6">
+                        <input onChange={this.titleChanged} className="form-control" id="titleFld"
+                               placeholder="New Course"/>
+                    </div>
+                    <div className="col-3">
+                        <button onClick={this.createCourse} className="btn btn-primary">
                             <i className="fa fa-plus"></i>
-                        </button></th>
-                    </tr>
-                    </tbody>
-                    </table>
-                </nav>
-                <div className="jumbotron text-center">
-                <table className="table">
-                    <thead className="thead-light">
+                        </button>
+                    </div>
+            </div>
+                    <br/>
+            </div>
+                <div className="container-fluid text-center">
+                <table className="table table-striped">
+                    <thead>
                     <tr>
                         <th></th>
                         <th scope="col">Title</th>
@@ -86,7 +91,7 @@ class CourseList extends React.Component {
                     {this.renderCourseRows()}
                     </tbody>
                 </table>
-                </div>
+            </div>
             </div>
         )
     }

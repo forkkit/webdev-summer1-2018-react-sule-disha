@@ -2,15 +2,16 @@ import React from 'react';
 import CourseList from "./CourseList";
 import CourseEditor from "./CourseEditor";
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 class CourseManager extends React.Component {
     render() {
         return (
             <Router>
-                <div className="container-fluid">
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <h1>Course Manager</h1>
+                <div>
+                    <nav className="navbar navbar-light" style={{backgroundColor:"#563d7c"}}>
+                    <h4 style={{color:"white"}}>Course Manager</h4>
                     </nav>
                     <Route path="/courses" component={CourseList}>
                     </Route>

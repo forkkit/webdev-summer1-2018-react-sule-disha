@@ -7,8 +7,7 @@ export default class ModuleListItem extends React.Component {
 
     render() {
         return (
-
-                <div className="container">
+                <li className="list-group-item">
                     <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>{this.props.module.title}</Link>
                     <div className="pull-right">
                     <button className="btn bg-transparent" onClick={() =>
@@ -16,7 +15,7 @@ export default class ModuleListItem extends React.Component {
                     (this.props.module.id)}}>
                         <i className="fa fa-times"></i>
                     </button></div>
-                </div>
+                </li>
         )}
 
 }

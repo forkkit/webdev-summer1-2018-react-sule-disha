@@ -84,9 +84,9 @@ export default class LessonTabs extends React.Component {
                                    courseId={this.props.courseId}
                                    delete={this.deleteLesson}/>)
         });
-        return (
+        return (<nav>
             <ul className="nav nav-pills nav-justified">
-                {lessons}</ul>
+                {lessons}</ul></nav>
         )
 
     }

@@ -10,7 +10,7 @@ class CourseRow extends React.Component {
     render() {
         return (
             <tr>
-                <td><i class="fa fa-file-text" aria-hidden="true"></i></td>
+                <td><i className="fa fa-file-text" aria-hidden="true"></i></td>
                 <td>        <Link to={`/course/${this.props.course.id}/edit`}>
                 {this.props.course.title}
             </Link></td>

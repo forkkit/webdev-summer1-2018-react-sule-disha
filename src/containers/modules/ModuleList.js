@@ -78,7 +78,7 @@ export default class ModuleList extends React.Component {
                 <ModuleListItem module={module} key={module.id} courseId={this.state.courseId}
                                 delete={this.deleteModule}/>
             )});
-        return (<ul>{modules}</ul>)
+        return (<ul class="list-group">{modules}</ul>)
     }
 
         render() {
