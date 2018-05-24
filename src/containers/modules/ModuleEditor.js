@@ -44,7 +44,7 @@ export default class ModuleEditor
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <h1>Module Editor Course Id: {this.state.courseId} Module Id: {this.state.moduleId}</h1>
                 </nav>
