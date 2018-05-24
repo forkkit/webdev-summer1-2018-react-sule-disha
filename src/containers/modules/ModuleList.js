@@ -6,7 +6,6 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
-
 export default class ModuleList extends React.Component {
 
     constructor(props) {
@@ -22,14 +21,18 @@ export default class ModuleList extends React.Component {
         this.moduleService = ModuleService.instance;
 
     }
+
     setCourseId(courseId) {
         this.setState({courseId: courseId});
     }
 
     setModuleTitle(event) {
-        this.setState({module: {
+        this.setState({
+            module: {
                 title: event.target.value
-            }})}
+            }
+        })
+    }
 
     createModule() {
         this.moduleService.createModule(this.state.courseId, this.state.module).then(() => {
@@ -39,6 +42,7 @@ export default class ModuleList extends React.Component {
         ;
 
     }
+
     findAllModulesForCourse(courseId) {
         this.moduleService
             .findAllModulesForCourse(courseId)
@@ -55,7 +59,8 @@ export default class ModuleList extends React.Component {
     componentDidMount() {
         this.setCourseId(this.props.courseId);
     }
-    componentWillReceiveProps(newProps){
+
+    componentWillReceiveProps(newProps) {
         this.setCourseId(newProps.courseId);
         this.findAllModulesForCourse(newProps.courseId)
 
@@ -71,17 +76,17 @@ export default class ModuleList extends React.Component {
     }
 
 
-
     renderModules() {
         let modules = this.state.modules.map((module) => {
             return (
                 <ModuleListItem module={module} key={module.id} courseId={this.state.courseId}
                                 delete={this.deleteModule}/>
-            )});
+            )
+        });
         return (<ul class="list-group">{modules}</ul>)
     }
 
-        render() {
+    render() {
         return (
             <Router>
                 <div className="row">
@@ -89,13 +94,20 @@ export default class ModuleList extends React.Component {
                         <table className="table">
                             <tbody>
                             <tr>
-                                <td><input value={this.state.module.title} onChange={this.setModuleTitle} className="form-control" placeholder="New Module"/></td>
-                                <td align="right"><button onClick={this.createModule} className="btn btn-primary"><i className="fa fa-plus"></i></button></td>
+                                <td><input value={this.state.module.title} onChange={this.setModuleTitle}
+                                           className="form-control" placeholder="New Module"/></td>
+                                <td align="right">
+                                    <button onClick={this.createModule} className="btn btn-primary"><i
+                                        className="fa fa-plus"></i></button>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
                         {this.renderModules()}
-                        </div>
-                    <div className="col-8"><Route path= "/course/:courseId/module/:moduleId" component={ModuleEditor}/></div>
-                </div></Router>)}
+                    </div>
+                    <div className="col-8"><Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}/>
+                    </div>
+                </div>
+            </Router>)
+    }
 }

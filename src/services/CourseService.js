@@ -1,6 +1,7 @@
 let _singleton = Symbol();
 const COURSE_API_URL =
     'http://localhost:8080/api/course';
+
 //const COURSE_API_URL = 'https://disha-sule-webdev-summer1-2018.herokuapp.com/api/course';
 
 
@@ -12,14 +13,14 @@ class CourseService {
     }
 
     static get instance() {
-        if(!this[_singleton])
+        if (!this[_singleton])
             this[_singleton] = new CourseService(_singleton);
         return this[_singleton]
     }
 
     findAllCourses() {
         return fetch(COURSE_API_URL)
-            .then(function(response){
+            .then(function (response) {
                 return response.json();
             });
     }
@@ -33,7 +34,8 @@ class CourseService {
             method: 'POST'
         }).then(function (response) {
             return response.json();
-        })}
+        })
+    }
 
     deleteCourse(courseId) {
         return fetch(COURSE_API_URL + '/' + courseId,
@@ -46,4 +48,5 @@ class CourseService {
 
 
 }
+
 export default CourseService;

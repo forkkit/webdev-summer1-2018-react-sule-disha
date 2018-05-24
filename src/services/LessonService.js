@@ -13,23 +13,25 @@ export default class LessonService {
     }
 
     static get instance() {
-        if(!this[_singleton])
+        if (!this[_singleton])
             this[_singleton] = new LessonService(_singleton);
         return this[_singleton]
     }
 
     createLesson(courseId, moduleId, lesson) {
         return fetch(LESSON_API_URL.replace('CID', courseId).replace('MID', moduleId),
-            {   body: JSON.stringify(lesson),
-                headers: { 'Content-Type': 'application/json' },
+            {
+                body: JSON.stringify(lesson),
+                headers: {'Content-Type': 'application/json'},
                 method: 'POST'
-            }).then(function (response)
-        { return response.json(); })
+            }).then(function (response) {
+            return response.json();
+        })
     }
 
-    findAllLessonsForModule(moduleId,courseId) {
-        return fetch( LESSON_API_URL.replace('CID', courseId).replace('MID',moduleId)).then(function (response) {
-               return response.json();
+    findAllLessonsForModule(moduleId, courseId) {
+        return fetch(LESSON_API_URL.replace('CID', courseId).replace('MID', moduleId)).then(function (response) {
+            return response.json();
         })
     }
 

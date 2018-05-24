@@ -25,26 +25,31 @@ class CourseList extends React.Component {
         );
         return (
             courses
-        )}
+        )
+    }
 
 
     titleChanged(event) {
         this.setState({
-            course: { title: event.target.value }
+            course: {title: event.target.value}
         });
     }
+
     createCourse() {
         this.courseService
             .createCourse(this.state.course)
-            .then(() => { this.findAllCourses(); });
+            .then(() => {
+                this.findAllCourses();
+            });
 
     }
 
     deleteCourse(courseId) {
         this.courseService
-            .deleteCourse(courseId).then(() => { this.findAllCourses(); });
+            .deleteCourse(courseId).then(() => {
+            this.findAllCourses();
+        });
     }
-
 
 
     findAllCourses() {
@@ -61,39 +66,40 @@ class CourseList extends React.Component {
                 <br/>
                 <div className="row"></div>
                 <div className="container-fluid">
-            <div className="row">
-                   <div className="col-3">
-                       <h3>Course List</h3>
-                   </div>
-                    <div className="col-6">
-                        <input onChange={this.titleChanged} className="form-control" id="titleFld"
-                               placeholder="New Course"/>
+                    <div className="row">
+                        <div className="col-3">
+                            <h3>Course List</h3>
+                        </div>
+                        <div className="col-6">
+                            <input onChange={this.titleChanged} className="form-control" id="titleFld"
+                                   placeholder="New Course"/>
+                        </div>
+                        <div className="col-3">
+                            <button onClick={this.createCourse} className="btn btn-primary">
+                                <i className="fa fa-plus"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div className="col-3">
-                        <button onClick={this.createCourse} className="btn btn-primary">
-                            <i className="fa fa-plus"></i>
-                        </button>
-                    </div>
-            </div>
                     <br/>
-            </div>
+                </div>
                 <div className="container-fluid text-center">
-                <table className="table table-striped">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Last Modified</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.renderCourseRows()}
-                    </tbody>
-                </table>
-            </div>
+                    <table className="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Last Modified</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {this.renderCourseRows()}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
 }
+
 export default CourseList;

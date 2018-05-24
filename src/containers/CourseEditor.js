@@ -1,5 +1,6 @@
 import React from 'react';
 import ModuleList from "./modules/ModuleList";
+
 class CourseEditor extends React.Component {
 
     constructor(props) {
@@ -7,23 +8,29 @@ class CourseEditor extends React.Component {
         this.selectCourse = this.selectCourse.bind(this);
         this.state = {courseId: ''};
     }
+
     selectCourse(courseId) {
         this.setState({courseId: courseId});
     }
+
     componentDidMount() {
         this.selectCourse
         (this.props.match.params.courseId);
     }
-    componentWillReceiveProps(newProps){
+
+    componentWillReceiveProps(newProps) {
         this.selectCourse
         (newProps.match.params.courseId);
     }
+
     render() {
         return (<div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light"><h3>Course ID: {this.state.courseId}</h3></nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light"><h3>Course ID: {this.state.courseId}</h3>
+            </nav>
             <ModuleList
                 courseId={this.state.courseId}/>
         </div>)
     }
 }
+
 export default CourseEditor;

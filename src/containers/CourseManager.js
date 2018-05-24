@@ -10,7 +10,7 @@ class CourseManager extends React.Component {
         return (
             <Router>
                 <div>
-                    <nav className="navbar navbar-light" style={{backgroundColor:"#563d7c"}}>
+                    <nav className="navbar navbar-light" style={{backgroundColor: "#563d7c"}}>
                     <h4 style={{color:"white"}}>Course Manager</h4>
                     </nav>
                     <Route path="/courses" component={CourseList}>
