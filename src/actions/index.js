@@ -60,4 +60,15 @@ export const hrefChanged = (dispatch, widgetId, newText) => (
         id: widgetId,
         text: newText})
 )
-
+export const listItemChanged = (dispatch, widgetId, newText) => (
+    dispatch({
+        type: constants.LIST_ITEM_CHANGED,
+        id: widgetId,
+        text: newText})
+)
+export const listTypeChanged = (dispatch, widgetId, newText) => (
+    dispatch({
+        type: constants.LIST_TYPE_CHANGED,
+        id: widgetId,
+        text: newText})
+)

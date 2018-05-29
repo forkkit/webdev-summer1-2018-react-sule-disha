@@ -5,6 +5,26 @@ let autoincrement=0
 export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
     switch(action.type){
 
+        case constants.LIST_TYPE_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.listType = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+        case constants.LIST_ITEM_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.listItem = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
         case constants.HREF_CHANGED:
             return {
                 widgets: state.widgets.map(widget => {
