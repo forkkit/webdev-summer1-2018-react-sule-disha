@@ -5,6 +5,12 @@ let autoincrement=0
 export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
     switch(action.type){
 
+        case constants.FIND_ALL_WIDGETS_FOR_LESSON:
+            return {
+                widgets: action.widgets,
+                lessonId: action.lessonId
+            }
+
         case constants.PREVIEW:
             return {
                 widgets: state.widgets,
@@ -42,19 +48,20 @@ export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
             return JSON.parse(JSON.stringify(newState))
 
         case constants.SAVE:
-            fetch('http://localhost:8080/api/widget/save', {
+            fetch('http://localhost:8080/api/lesson/LID/widgets'.replace('LID',action.lessonId), {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
                     'content-type': 'application/json'}
             })
-            return state
+            return state;
 
 
         case constants.FIND_ALL_WIDGETS:
             return {
                 widgets: action.widgets
             }
+
         case constants.ADD_WIDGET:
             return {
                 widgets:[

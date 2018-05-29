@@ -83,7 +83,7 @@ export default class ModuleList extends React.Component {
                                 delete={this.deleteModule}/>
             )
         });
-        return (<ul class="list-group">{modules}</ul>)
+        return (<ul className="list-group">{modules}</ul>)
     }
 
     render() {

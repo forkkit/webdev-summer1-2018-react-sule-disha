@@ -1,4 +1,14 @@
 import React from 'react';
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
+import * as constants from '../../constants/index'
+import {widgetReducer} from '../../reducers/widgetReducer'
+import {WidgetContainer} from '../../components/Widget'
+import * as actions from '../../actions/index'
+import {App}from '../WidgitList'
+
+
+const store= createStore(widgetReducer)
 
 export default class LessonEditor extends React.Component {
 
@@ -60,22 +70,9 @@ export default class LessonEditor extends React.Component {
                 <h6>Course Id: {this.state.courseId}</h6>
                 <h6>Module Id: {this.state.moduleId}</h6>
                 <h6>Lesson Id: {this.state.lessonId}</h6>
-                <h3>
-                    Content
-                </h3>
-                <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla suscipit,
-                    mi et lacinia lobortis, eros dui bibendum orci, mattis ullamcorper felis ipsum eget ex.
-                    Quisque eget ante urna. Cras et nulla ac tellus tempus vulputate ut sit amet ipsum. Donec id
-                    molestie arcu.
-                    Ut id felis nisi. Mauris sollicitudin posuere lacinia. Vestibulum semper lacinia purus vel
-                    consectetur.
-                    Phasellus finibus enim velit, et gravida quam maximus id. Fusce porta bibendum magna, quis auctor
-                    arcu cursus sit amet.
-                    Phasellus non velit quis sem commodo sodales. Duis diam lorem,
-                    sodales elementum odio eu, cursus tempus mauris. Nullam ac sem blandit, viverra nisi nec,
-                    tempus ex. Pellentesque et felis suscipit, viverra lorem sit amet, fringilla risus.
-                </h6>
+                <Provider store={store}>
+                    <App lessonId={this.state.lessonId}/>
+                </Provider>,
             </div>
         )
     }

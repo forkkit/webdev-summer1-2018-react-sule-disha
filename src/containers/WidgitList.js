@@ -4,16 +4,24 @@ import * as actions from "../actions";
 import {WidgetContainer} from '../components/Widget'
 
 class WidgetList extends Component {
-    constructor(props) {
-        super(props);
-        this.props.findAllWidgets()
+
+    constructor(props){
+        super(props)
     }
 
+    componentDidMount(){
+    }
+
+    componentWillReceiveProps(newProps){
+        if(newProps.lessonId!==this.props.lessonId){
+            this.props.findAllWidgetsForLesson(newProps.lessonId);
+        }
+    }
     render(){
         return (
 
             <div>
-                <button hidden={this.props.previewMode} onClick={this.props.save}>
+                <button hidden={this.props.previewMode} onClick={()=>{this.props.save(this.props.lessonId)}}>
                     Save
                 </button>
                 <button onClick={this.props.preview}>
@@ -36,16 +44,17 @@ class WidgetList extends Component {
 
 
 const dispatcherToPropsMapper
-    = dispatch => ({
+    = (dispatch) => ({
     findAllWidgets: () => actions.findAllWidgets(dispatch),
     addWidget:() => actions.addWidget(dispatch),
-    save:() => actions.save(dispatch),
-    preview: () => actions.preview(dispatch)
+    save:(lessonId) => actions.save(dispatch, lessonId),
+    preview: () => actions.preview(dispatch),
+    findAllWidgetsForLesson: (lessonId) => actions.findAllWidgetsForLesson(dispatch, lessonId)
 })
 
 const stateToPropertiesMapper = (state) => ({
     widgets: state.widgets,
-    previewMode: state.preview
+    previewMode: state.preview,
 })
 
 

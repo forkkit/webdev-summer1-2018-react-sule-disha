@@ -11,11 +11,13 @@ import * as actions from './actions/index'
 import {App}from './containers/WidgitList'
 
 
-const store= createStore(widgetReducer)
+//const store= createStore(widgetReducer)
 ReactDOM.render(
-    //<CourseManager/>,
+    <CourseManager/>,
+    /**
     <Provider store={store}>
     <App/>
     </Provider>,
+     **/
 document.getElementById('root')
 );
