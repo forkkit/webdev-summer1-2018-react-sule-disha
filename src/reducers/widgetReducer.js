@@ -5,6 +5,35 @@ let autoincrement=0
 export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
     switch(action.type){
 
+        case constants.HREF_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.href = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+        case constants.IMG_URL_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.src = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+        case constants.PARAGRAPH_TEXT_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.text = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
         case constants.FIND_ALL_WIDGETS_FOR_LESSON:
             return {
                 widgets: action.widgets,

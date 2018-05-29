@@ -39,3 +39,25 @@ export const headingTextChanged = (dispatch, widgetId, newText) => (
 export const preview = dispatch => (
     dispatch({type: constants.PREVIEW})
 )
+
+export const paragraphTextChanged = (dispatch, widgetId, newText) => (
+    dispatch({
+        type: constants.PARAGRAPH_TEXT_CHANGED,
+        id: widgetId,
+        text: newText})
+)
+
+export const imgUrlChanged = (dispatch, widgetId, newText) => (
+    dispatch({
+        type: constants.IMG_URL_CHANGED,
+        id: widgetId,
+        text: newText})
+)
+
+export const hrefChanged = (dispatch, widgetId, newText) => (
+    dispatch({
+        type: constants.HREF_CHANGED,
+        id: widgetId,
+        text: newText})
+)
+
