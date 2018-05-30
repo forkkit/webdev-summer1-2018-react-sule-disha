@@ -71,7 +71,8 @@ export default class LessonEditor extends React.Component {
                 <h6>Module Id: {this.state.moduleId}</h6>
                 <h6>Lesson Id: {this.state.lessonId}</h6>
                 <Provider store={store}>
-                    <App lessonId={this.state.lessonId}/>
+                    <App lessonId={this.state.lessonId} moduleId={this.state.moduleId}
+                         courseId={this.state.courseId}/>
                 </Provider>,
             </div>
         )

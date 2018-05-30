@@ -104,7 +104,6 @@ export default class LessonTabs extends React.Component {
 
     render() {
         return (
-            <Router>
                 <div className="container-fluid">
                     <table className="table">
                         <tbody>
@@ -120,11 +119,7 @@ export default class LessonTabs extends React.Component {
                         </tbody>
                     </table>
                     {this.renderLessons()}
-                    <div className="tab-content">
-                        <Route path="/course/:courseId/module/:moduleId/lesson/:lessonId" component={LessonEditor}/>
-                    </div>
                 </div>
-            </Router>
         )
     }
 }

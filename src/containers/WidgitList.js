@@ -9,7 +9,7 @@ class WidgetList extends Component {
         super(props)
     }
 
-    componentDidMount(){
+    componentDidMount() {
     }
 
     componentWillReceiveProps(newProps){

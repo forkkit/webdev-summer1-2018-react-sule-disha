@@ -1,10 +1,5 @@
 import * as constants from "../constants/index";
 
-Array.prototype.move
-    = function (from, to) {
-    this.splice(to, 0, this.splice(from, 1)[0]);
-};
-
 
 export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
     switch(action.type){
@@ -139,7 +134,7 @@ export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
                     return widget;
                 })}
 
-        case 'MOVE_UP':
+        case constants.MOVE_UP:
             let newState2 = {
                 widgets: state.widgets.map(widget => {
                     if(widget.widgetOrder===(action.widgetOrder - 1))
@@ -152,7 +147,7 @@ export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
 
 
 
-        case 'MOVE_DOWN':
+        case constants.MOVE_DOWN:
             let newState3 = {
                 widgets: state.widgets.map(widget => {
                     if(widget.widgetOrder===(action.widgetOrder + 1))
