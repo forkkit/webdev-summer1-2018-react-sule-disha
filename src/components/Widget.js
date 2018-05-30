@@ -29,8 +29,14 @@ const Widget
                 <option>Link</option>
             </select>
             <button onClick={
-                e => (dispatch({type: constants.DELETE_WIDGET, id: widget.id}))}> DELETE
+                e => (dispatch({type: constants.DELETE_WIDGET, id: widget.id, widgetOrder: widget.widgetOrder}))}> DELETE
             </button>
+                <button onClick={
+                    e => (dispatch({type: constants.MOVE_UP, id: widget.id, widgetOrder: widget.widgetOrder}))}> UP
+                </button>
+                <button onClick={
+                    e => (dispatch({type: constants.MOVE_DOWN, id: widget.id, widgetOrder: widget.widgetOrder}))}> DOWN
+                </button>
             </div>
             <div>
                 {widget.widgetType==='Heading' && <HeadingContainer widget={widget}/>}
@@ -43,6 +49,8 @@ const Widget
         </li>
     )
 }
+
+
 export const WidgetContainer = connect(state => ({
     preview: state.preview
 }))(Widget)

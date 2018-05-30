@@ -28,7 +28,7 @@ class WidgetList extends Component {
                     Preview
                 </button>
                 <ul>
-                    {this.props.widgets.map(widget =>
+                    {this.props.widgets.sort((w1, w2) => w1.widgetOrder > w2.widgetOrder).map(widget =>
                         <WidgetContainer key={widget.id}
                                          widget={widget}/>)}
                 </ul>

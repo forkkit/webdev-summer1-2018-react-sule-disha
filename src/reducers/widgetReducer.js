@@ -1,9 +1,14 @@
 import * as constants from "../constants/index";
 
-let autoincrement=0
+Array.prototype.move
+    = function (from, to) {
+    this.splice(to, 0, this.splice(from, 1)[0]);
+};
+
 
 export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
     switch(action.type){
+
 
         case constants.LIST_TYPE_CHANGED:
             return {
@@ -107,6 +112,7 @@ export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
 
 
         case constants.FIND_ALL_WIDGETS:
+            console.log(action.widgets)
             return {
                 widgets: action.widgets
             }
@@ -116,17 +122,46 @@ export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
                 widgets:[
                     ...state.widgets,
                     {
-                        id: ++autoincrement,
-                        text: "New Widget",
-                        widgetType: 'Paragraph',
-                        size: '2'
+                        id: state.widgets.length+1,
+                        text: "",
+                        widgetType: 'Heading',
+                        size: '1',
+                        widgetOrder:state.widgets.length+1
                     }
                 ]
             }
         case constants.DELETE_WIDGET:
             return {
                 widgets: state.widgets.filter(widget=> (
-                    widget.id !== action.id))}
+                    widget.id !== action.id)).map(widget => {
+                    if(widget.widgetOrder>action.widgetOrder)
+                        widget.widgetOrder=widget.widgetOrder-1
+                    return widget;
+                })}
+
+        case 'MOVE_UP':
+            let newState2 = {
+                widgets: state.widgets.map(widget => {
+                    if(widget.widgetOrder===(action.widgetOrder - 1))
+                        widget.widgetOrder=widget.widgetOrder+1
+                    if(widget.id=== action.id)
+                        widget.widgetOrder=widget.widgetOrder-1
+                    return widget
+    })}
+                return Object.assign({}, newState2)
+
+
+
+        case 'MOVE_DOWN':
+            let newState3 = {
+                widgets: state.widgets.map(widget => {
+                    if(widget.widgetOrder===(action.widgetOrder + 1))
+                        widget.widgetOrder=widget.widgetOrder-1
+                    if(widget.id=== action.id)
+                        widget.widgetOrder=widget.widgetOrder+1
+                    return widget
+                })}
+            return Object.assign({}, newState3)
 
         default:
             return state
