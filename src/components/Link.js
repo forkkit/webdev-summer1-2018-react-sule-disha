@@ -3,17 +3,19 @@ import * as actions from "../actions";
 import {connect} from "react-redux";
 
 
-const Link = ({widget, preview,  hrefChanged, linkTextChanged}) => {
+const Link = ({widget, preview, hrefChanged, linkTextChanged}) => {
     let inputElem
     let linkElem
-    return(
+    return (
         <div>
             <div hidden={preview}>
-                <input className="form-control" placeholder="Link Url" onChange={() => hrefChanged(widget.id, inputElem.value)}
+                <input className="form-control" placeholder="Link Url"
+                       onChange={() => hrefChanged(widget.id, inputElem.value)}
                        value={widget.href}
                        ref={node => inputElem = node}/>
                 <br/>
-                <input className="form-control" placeholder="Link Text"  onChange={() => linkTextChanged(widget.id, linkElem.value)}
+                <input className="form-control" placeholder="Link Text"
+                       onChange={() => linkTextChanged(widget.id, linkElem.value)}
                        value={widget.text}
                        ref={node => linkElem = node}/>
 
@@ -29,7 +31,7 @@ const dispatchToPropsMapper = dispatch => ({
 
     hrefChanged: (widgetId, newText) =>
         actions.hrefChanged(dispatch, widgetId, newText),
-    linkTextChanged:  (widgetId, newText) =>
+    linkTextChanged: (widgetId, newText) =>
         actions.linkTextChanged(dispatch, widgetId, newText)
 
 })

@@ -3,14 +3,15 @@ import * as actions from "../actions";
 import {connect} from "react-redux";
 
 
-const Image = ({widget, preview,  imgUrlChanged}) => {
+const Image = ({widget, preview, imgUrlChanged}) => {
     let inputElem
-    return(
+    return (
         <div>
             <div hidden={preview}>
-                <input  className="form-control" placeholder="Image URL" onChange={() => imgUrlChanged(widget.id, inputElem.value)}
-                          value={widget.src}
-                          ref={node => inputElem = node}/>
+                <input className="form-control" placeholder="Image URL"
+                       onChange={() => imgUrlChanged(widget.id, inputElem.value)}
+                       value={widget.src}
+                       ref={node => inputElem = node}/>
 
                 <h3>Preview</h3>
             </div>

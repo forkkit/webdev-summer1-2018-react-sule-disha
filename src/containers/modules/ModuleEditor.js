@@ -1,7 +1,7 @@
 import React from 'react';
 import LessonTabs from "../lessons/LessonTabs";
 import LessonEditor from "../lessons/LessonEditor";
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 export default class ModuleEditor
     extends React.Component {

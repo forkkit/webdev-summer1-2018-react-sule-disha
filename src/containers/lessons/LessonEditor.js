@@ -1,14 +1,11 @@
 import React from 'react';
-import { createStore } from 'redux'
-import { Provider, connect } from 'react-redux'
-import * as constants from '../../constants/index'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
 import {widgetReducer} from '../../reducers/widgetReducer'
-import {WidgetContainer} from '../../components/Widget'
-import * as actions from '../../actions/index'
-import {App}from '../WidgitList'
+import {App} from '../WidgitList'
 
 
-const store= createStore(widgetReducer)
+const store = createStore(widgetReducer)
 
 export default class LessonEditor extends React.Component {
 

@@ -2,8 +2,6 @@ import React from 'react';
 import LessonService from '../../services/LessonService';
 import LessonTabItem from "../../components/LessonTabItem"
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import LessonEditor from "./LessonEditor";
 
 export default class LessonTabs extends React.Component {
 
@@ -104,22 +102,22 @@ export default class LessonTabs extends React.Component {
 
     render() {
         return (
-                <div className="container-fluid">
-                    <table className="table">
-                        <tbody>
-                        <tr>
-                            <td>
-                                <input value={this.state.lesson.title} className="form-control" placeholder="New Lesson"
-                                       onChange={this.setLessonTitle}/>
-                            </td>
-                            <td>
-                                <button onClick={this.createLesson} className="btn btn-primary">Create</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    {this.renderLessons()}
-                </div>
+            <div className="container-fluid">
+                <table className="table">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input value={this.state.lesson.title} className="form-control" placeholder="New Lesson"
+                                   onChange={this.setLessonTitle}/>
+                        </td>
+                        <td>
+                            <button onClick={this.createLesson} className="btn btn-primary">Create</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                {this.renderLessons()}
+            </div>
         )
     }
 }

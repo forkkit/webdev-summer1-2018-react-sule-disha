@@ -3,13 +3,14 @@ import * as actions from "../actions";
 import {connect} from "react-redux";
 
 
-const Heading = ({widget, preview,  headingSizeChanged, headingTextChanged}) => {
+const Heading = ({widget, preview, headingSizeChanged, headingTextChanged}) => {
     let selectElem
     let inputElem
-    return(
+    return (
         <div>
             <div className="form-group" hidden={preview}>
-                <input className="form-control" placeholder="Heading Text" onChange={() => headingTextChanged(widget.id, inputElem.value)}
+                <input className="form-control" placeholder="Heading Text"
+                       onChange={() => headingTextChanged(widget.id, inputElem.value)}
                        value={widget.text}
                        ref={node => inputElem = node}/>
                 <br/>
