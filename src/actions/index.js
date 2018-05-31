@@ -1,14 +1,21 @@
 import * as constants from "../constants";
+//const WIDGET_API_URL1 = 'http://localhost:8080/api/widgets';
+//const WIDGET_API_URL2 ='http://localhost:8080/api/lesson/LID/widgets'
+
+
+const WIDGET_API_URL1 = 'https://disha-sule-webdev-summer1-2018.herokuapp.com/api/widgets';
+const WIDGET_API_URL2 ='https://disha-sule-webdev-summer1-2018.herokuapp.com/api/lesson/LID/widgets'
+
 
 export const findAllWidgets = dispatch => {
-    fetch('http://localhost:8080/api/widgets')
+    fetch(WIDGET_API_URL1)
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type: constants.FIND_ALL_WIDGETS,
             widgets: widgets }))
 }
 export const findAllWidgetsForLesson = (dispatch, lessonId) => {
-    fetch(('http://localhost:8080/api/lesson/LID/widgets').replace('LID',lessonId))
+    fetch(WIDGET_API_URL2.replace('LID',lessonId))
         .then(response => (response.json()))
         .then(widgets => dispatch({
             type: constants.FIND_ALL_WIDGETS_FOR_LESSON,

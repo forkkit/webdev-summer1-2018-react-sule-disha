@@ -1,6 +1,7 @@
 import * as constants from "../constants/index";
 
-
+//const WIDGET_API_URL ='http://localhost:8080/api/lesson/LID/widgets'
+const WIDGET_API_URL ='https://disha-sule-webdev-summer1-2018.herokuapp.com/api/lesson/LID/widgets'
 export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
     switch (action.type) {
 
@@ -117,7 +118,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             return JSON.parse(JSON.stringify(newState))
 
         case constants.SAVE:
-            fetch('http://localhost:8080/api/lesson/LID/widgets'.replace('LID', action.lessonId), {
+            fetch(WIDGET_API_URL.replace('LID', action.lessonId), {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
