@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import * as actions from "../actions";
 import {WidgetContainer} from '../components/Widget'
+import ToggleButton from 'react-toggle-button'
 
 class WidgetList extends Component {
 
@@ -21,18 +22,24 @@ class WidgetList extends Component {
         return (
 
             <div>
-                <button hidden={this.props.previewMode} onClick={()=>{this.props.save(this.props.lessonId)}}>
+                <div className="row">
+                <button className= "btn btn-primary" hidden={this.props.previewMode} onClick={()=>{this.props.save(this.props.lessonId)}}>
                     Save
-                </button>
-                <button onClick={this.props.preview}>
-                    Preview
-                </button>
-                <ul>
+                </button>  &nbsp; &nbsp; &nbsp; &nbsp;
+                    <ToggleButton value={this.props.previewMode} onToggle={this.props.preview}/>
+                    &nbsp; &nbsp;
+                    <h6>Preview</h6>
+                </div>
+                <br/>
+                <br/>
+                <div className="container-fluid">
+                    <br/>
                     {this.props.widgets.sort((w1, w2) => w1.widgetOrder > w2.widgetOrder).map(widget =>
                         <WidgetContainer key={widget.id}
                                          widget={widget}/>)}
-                </ul>
-                <button onClick={this.props.addWidget}>ADD WIDGET
+                </div>
+                <br/>
+                <button className= "btn btn-primary" onClick={this.props.addWidget}>ADD WIDGET
                 </button>
             </div>
         )

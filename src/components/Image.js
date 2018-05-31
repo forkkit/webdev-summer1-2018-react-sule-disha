@@ -8,7 +8,7 @@ const Image = ({widget, preview,  imgUrlChanged}) => {
     return(
         <div>
             <div hidden={preview}>
-                <input onChange={() => imgUrlChanged(widget.id, inputElem.value)}
+                <input  className="form-control" placeholder="Image URL" onChange={() => imgUrlChanged(widget.id, inputElem.value)}
                           value={widget.src}
                           ref={node => inputElem = node}/>
 

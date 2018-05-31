@@ -9,11 +9,12 @@ const List = ({widget, preview,  listItemChanged, listTypeChanged}) => {
     return(
         <div>
             <div hidden={preview}>
-                <textarea onChange={() => listItemChanged(widget.id, inputElem.value)}
+                <textarea rows="10" column="50" className="form-control" onChange={() => listItemChanged(widget.id, inputElem.value)}
                           value={widget.listItem}
                           ref={node => inputElem = node}/>
+                <br/>
 
-                <select onChange={() => listTypeChanged(widget.id, selectElem.value)}
+                <select className="form-control" onChange={() => listTypeChanged(widget.id, selectElem.value)}
                         value={widget.listType}
                         ref={node => selectElem = node}>
                     <option>Unordered List</option>

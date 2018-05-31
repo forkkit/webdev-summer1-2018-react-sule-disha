@@ -7,15 +7,20 @@ import {ParagraphContainer} from "./Paragraph";
 import {ImageContainer} from "./Image";
 import {LinkContainer} from "./Link";
 import {ListContainer} from "./List";
+//import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 const Widget
     = ({ widget, preview, dispatch}) => {
     let selectElement
+    let inputElement
     return (
-        <li>
+        <div>
+        <div className="container-fluid" style={{border:"solid"}}>
             <div hidden={preview}>
-            {widget.id} {widget.widgetType}
-            <select value={widget.widgetType}
+                <h2>{widget.widgetType} Widget</h2>
+                <br/>
+            <div className="pull-left">
+            <select  className="form-control" value={widget.widgetType}
                     onChange={e =>
                         dispatch({
                             type: constants.SELECT_WIDGET_TYPE,
@@ -28,25 +33,46 @@ const Widget
                 <option>Image</option>
                 <option>Link</option>
             </select>
-            <button onClick={
-                e => (dispatch({type: constants.DELETE_WIDGET, id: widget.id, widgetOrder: widget.widgetOrder}))}> DELETE
+            </div>
+                <div className="pull-right">
+            <button className="btn btn-danger" onClick={
+                e => (dispatch({type: constants.DELETE_WIDGET, id: widget.id, widgetOrder: widget.widgetOrder}))}> x
             </button>
-                <button onClick={
-                    e => (dispatch({type: constants.MOVE_UP, id: widget.id, widgetOrder: widget.widgetOrder}))}> UP
+                    &nbsp; &nbsp;
+
+                <button style={{backgroundColor:"#ffcc00"}} onClick={
+                    e => (dispatch({type: constants.MOVE_UP, id: widget.id, widgetOrder: widget.widgetOrder}))}>
+                    <i className="fa fa-caret-up"></i>
                 </button>
-                <button onClick={
-                    e => (dispatch({type: constants.MOVE_DOWN, id: widget.id, widgetOrder: widget.widgetOrder}))}> DOWN
+                    &nbsp; &nbsp;
+                <button style={{backgroundColor:"#ffcc00"}} onClick={
+                    e => (dispatch({type: constants.MOVE_DOWN, id: widget.id, widgetOrder: widget.widgetOrder}))}>
+                    <i className="fa fa-caret-down"></i>
                 </button>
             </div>
+                <br/>
+                <br/>
+                <input className="form-control" placeholder="Widget Name"
+                       value={widget.name}
+                       onChange={e =>
+                           dispatch({
+                               type: constants.WIDGET_NAME_CHANGED,
+                               id: widget.id,
+                               name: inputElement.value
+                           })} ref={node => inputElement = node}/>
+                </div>
+            <br/>
             <div>
                 {widget.widgetType==='Heading' && <HeadingContainer widget={widget}/>}
                 {widget.widgetType==='Paragraph' && <ParagraphContainer widget={widget}/>}
                 {widget.widgetType==='List' && <ListContainer widget={widget}/>}
                 {widget.widgetType==='Link' && <LinkContainer widget={widget} />}
                 {widget.widgetType==='Image' && <ImageContainer widget={widget}/>}
+                <br/>
             </div>
-
-        </li>
+        </div>
+        <br/>
+        </div>
     )
 }
 

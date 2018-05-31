@@ -65,11 +65,7 @@ export default class LessonEditor extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>Lesson Editor</h3>
-                <h6>Course Id: {this.state.courseId}</h6>
-                <h6>Module Id: {this.state.moduleId}</h6>
-                <h6>Lesson Id: {this.state.lessonId}</h6>
+            <div className="container-fluid">
                 <Provider store={store}>
                     <App lessonId={this.state.lessonId} moduleId={this.state.moduleId}
                          courseId={this.state.courseId}/>

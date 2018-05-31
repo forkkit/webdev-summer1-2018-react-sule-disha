@@ -4,6 +4,26 @@ import * as constants from "../constants/index";
 export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
     switch(action.type){
 
+        case constants.LINK_TEXT_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.text = action.text
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
+
+
+        case constants.WIDGET_NAME_CHANGED:
+            return {
+                widgets: state.widgets.map(widget => {
+                    if(widget.id === action.id) {
+                        widget.name= action.name
+                    }
+                    return Object.assign({}, widget)
+                })
+            }
 
         case constants.LIST_TYPE_CHANGED:
             return {
@@ -121,7 +141,10 @@ export const widgetReducer=(state= {widgets:[], preview: false}, action)=>{
                         text: "",
                         widgetType: 'Heading',
                         size: '1',
-                        widgetOrder:state.widgets.length+1
+                        widgetOrder:state.widgets.length+1,
+                        listType:'Unordered List',
+                        listItem:"Put each\nItem on\nSeperate row"
+
                     }
                 ]
             }
