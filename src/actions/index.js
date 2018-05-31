@@ -1,10 +1,10 @@
 import * as constants from "../constants";
-//const WIDGET_API_URL1 = 'http://localhost:8080/api/widgets';
-//const WIDGET_API_URL2 ='http://localhost:8080/api/lesson/LID/widgets'
+const WIDGET_API_URL1 = 'http://localhost:8080/api/widgets';
+const WIDGET_API_URL2 ='http://localhost:8080/api/lesson/LID/widgets'
 
 
-const WIDGET_API_URL1 = 'https://disha-sule-webdev-summer1-2018.herokuapp.com/api/widgets';
-const WIDGET_API_URL2 ='https://disha-sule-webdev-summer1-2018.herokuapp.com/api/lesson/LID/widgets'
+//const WIDGET_API_URL1 = 'https://disha-sule-webdev-summer1-2018.herokuapp.com/api/widgets';
+//const WIDGET_API_URL2 ='https://disha-sule-webdev-summer1-2018.herokuapp.com/api/lesson/LID/widgets'
 
 
 export const findAllWidgets = dispatch => {
